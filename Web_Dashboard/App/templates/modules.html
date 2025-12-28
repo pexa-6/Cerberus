@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ module.name }} - Cerberus</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/dashboard" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Назад
+            </a>
+            <div class="logo">
+                <i class="fas fa-shield-dog"></i>
+                <h1>{{ module.name }}</h1>
+            </div>
+        </div>
+
+        <div class="nav-center">
+            <div class="module-info">
+                <i class="fas fa-cube"></i>
+                <span>Модуль управления</span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <button class="nav-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Выйти
+            </button>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="module-page">
+        <!-- Заголовок модуля -->
+        <div class="module-header">
+            <div class="module-title">
+                <h2><i class="fas fa-cogs"></i> {{ module.name }}</h2>
+                <p class="module-description">{{ module.description }}</p>
+            </div>
+            <div class="module-status">
+                <span class="status-badge active">
+                    <i class="fas fa-circle"></i> Активен
+                </span>
+            </div>
+        </div>
+
+        <!-- Функции модуля -->
+        <div class="functions-grid">
+            {% for function in module.functions %}
+            <div class="function-card">
+                <div class="function-icon">
+                    {% if function.id == 'terminal' %}
+                    <i class="fas fa-terminal"></i>
+                    {% elif function.id == 'processes' %}
+                    <i class="fas fa-microchip"></i>
+                    {% elif function.id == 'services' %}
+                    <i class="fas fa-cogs"></i>
+                    {% elif function.id == 'files' %}
+                    <i class="fas fa-folder"></i>
+                    {% elif function.id == 'network' %}
+                    <i class="fas fa-network-wired"></i>
+                    {% elif function.id == 'users' %}
+                    <i class="fas fa-users"></i>
+                    {% elif function.id == 'firewall' %}
+                    <i class="fas fa-fire"></i>
+                    {% elif function.id == 'logs' %}
+                    <i class="fas fa-scroll"></i>
+                    {% elif function.id == 'security' %}
+                    <i class="fas fa-shield-alt"></i>
+                    {% elif function.id == 'monitoring' %}
+                    <i class="fas fa-chart-line"></i>
+                    {% elif function.id == 'network_scan' %}
+                    <i class="fas fa-search"></i>
+                    {% elif function.id == 'backup' %}
+                    <i class="fas fa-hdd"></i>
+                    {% elif function.id == 'alerts' %}
+                    <i class="fas fa-bell"></i>
+                    {% elif function.id == 'reports' %}
+                    <i class="fas fa-chart-bar"></i>
+                    {% elif function.id == 'automation' %}
+                    <i class="fas fa-robot"></i>
+                    {% elif function.id == 'settings' %}
+                    <i class="fas fa-sliders-h"></i>
+                    {% else %}
+                    <i class="fas fa-cog"></i>
+                    {% endif %}
+                </div>
+
+                <div class="function-content">
+                    <h3>{{ function.name }}</h3>
+                    <p>{{ function.description }}</p>
+                    <div class="function-status">
+                        <span class="status-label">Статус:</span>
+                        <span class="status-value not-implemented">Не реализовано</span>
+                    </div>
+                </div>
+
+                <div class="function-actions">
+                    <button class="btn-function" onclick="executeFunction('{{ module_id }}', '{{ function.id }}')">
+                        <i class="fas fa-play"></i> Выполнить
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Панель результатов -->
+        <div class="results-panel">
+            <div class="results-header">
+                <h3><i class="fas fa-code"></i> Результаты выполнения</h3>
+                <button class="btn-clear" onclick="clearResults()">
+                    <i class="fas fa-trash"></i> Очистить
+                </button>
+            </div>
+            <div id="resultsContainer" class="results-container">
+                <div class="welcome-message">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Нажмите на кнопку "Выполнить" для тестирования функций модуля</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Футер -->
+        <footer class="module-footer">
+            <p>
+                <i class="fas fa-cube"></i> {{ module.name }} |
+                <span id="moduleTime">--:--:--</span> |
+                Функций: {{ module.functions|length }}
+            </p>
+        </footer>
+    </main>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Информация</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Содержимое модального окна -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Глобальные переменные
+        const moduleId = "{{ module_id }}";
+
+        // Функция выполнения
+        async function executeFunction(moduleId, functionId) {
+            try {
+                // Показываем загрузку
+                addResult({
+                    type: 'loading',
+                    message: `Запуск функции: ${functionId}`,
+                    module: moduleId
+                });
+
+                // Отправляем запрос на сервер
+                const response = await fetch(`/api/module/${moduleId}/${functionId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                // Показываем результат
+                addResult({
+                    type: data.status,
+                    message: data.message,
+                    module: moduleId,
+                    function: functionId,
+                    timestamp: data.timestamp
+                });
+
+            } catch (error) {
+                addResult({
+                    type: 'error',
+                    message: `Ошибка: ${error.message}`,
+                    module: moduleId,
+                    function: functionId
+                });
+            }
+        }
+
+        // Добавление результата
+        function addResult(result) {
+            const container = document.getElementById('resultsContainer');
+            const resultElement = document.createElement('div');
+            resultElement.className = `result-item ${result.type}`;
+
+            let icon = 'ℹ️';
+            if (result.type === 'success') icon = '✅';
+            if (result.type === 'error') icon = '❌';
+            if (result.type === 'loading') icon = '⏳';
+            if (result.type === 'info') icon = 'ℹ️';
+
+            const time = result.timestamp ? new Date(result.timestamp).toLocaleTimeString() : new Date().toLocaleTimeString();
+
+            resultElement.innerHTML = `
+                <div class="result-icon">${icon}</div>
+                <div class="result-content">
+                    <div class="result-header">
+                        <strong>${result.module}.${result.function || 'unknown'}</strong>
+                        <span class="result-time">${time}</span>
+                    </div>
+                    <div class="result-message">${result.message}</div>
+                </div>
+            `;
+
+            container.insertBefore(resultElement, container.firstChild);
+        }
+
+        // Очистка результатов
+        function clearResults() {
+            const container = document.getElementById('resultsContainer');
+            container.innerHTML = `
+                <div class="welcome-message">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Нажмите на кнопку "Выполнить" для тестирования функций модуля</p>
+                </div>
+            `;
+        }
+
+        // Обновление времени
+        function updateTime() {
+            const time = new Date().toLocaleTimeString('ru-RU');
+            document.getElementById('moduleTime').textContent = time;
+        }
+
+        // Выход из системы
+        async function logout() {
+            try {
+                await fetch('/logout', { method: 'POST' });
+                window.location.href = '/';
+            } catch (error) {
+                alert('Ошибка при выходе: ' + error.message);
+            }
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTime();
+            setInterval(updateTime, 1000);
+        });
+    </script>
+</body>
+</html>

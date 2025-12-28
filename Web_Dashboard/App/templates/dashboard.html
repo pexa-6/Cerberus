@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerberus - Панель управления</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo">
+                <i class="fas fa-shield-dog"></i>
+                <h1>Cerberus</h1>
+            </div>
+        </div>
+
+        <div class="nav-center">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>{{ username }}</span>
+                <div class="user-status online"></div>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <button class="nav-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Выйти
+            </button>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="dashboard">
+        <div class="dashboard-header">
+            <h2><i class="fas fa-tachometer-alt"></i> Панель управления</h2>
+            <p class="subtitle">Добро пожаловать в центр управления безопасностью</p>
+        </div>
+
+        <!-- Модули -->
+        <div class="modules-grid">
+            <!-- Модуль 1: Управление Linux -->
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fab fa-linux"></i>
+                </div>
+                <div class="module-content">
+                    <h3>{{ modules.linux_control.name }}</h3>
+                    <p class="module-description">{{ modules.linux_control.description }}</p>
+                    <div class="module-stats">
+                        <span class="stat"><i class="fas fa-cogs"></i> 8 функций</span>
+                        <span class="stat"><i class="fas fa-bolt"></i> Активен</span>
+                    </div>
+                </div>
+                <div class="module-actions">
+                    <a href="/modules/linux_control" class="btn-module">
+                        <i class="fas fa-arrow-right"></i> Открыть
+                    </a>
+                </div>
+            </div>
+
+            <!-- Модуль 2: Управление модулями -->
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
+                <div class="module-content">
+                    <h3>{{ modules.modules_control.name }}</h3>
+                    <p class="module-description">{{ modules.modules_control.description }}</p>
+                    <div class="module-stats">
+                        <span class="stat"><i class="fas fa-cogs"></i> 8 функций</span>
+                        <span class="stat"><i class="fas fa-bolt"></i> Активен</span>
+                    </div>
+                </div>
+                <div class="module-actions">
+                    <a href="/modules/modules_control" class="btn-module">
+                        <i class="fas fa-arrow-right"></i> Открыть
+                    </a>
+                </div>
+            </div>
+
+            <!-- Карточка информации -->
+            <div class="info-card">
+                <h3><i class="fas fa-info-circle"></i> Информация о системе</h3>
+                <div class="info-content">
+                    <div class="info-item">
+                        <span class="info-label">Пользователь:</span>
+                        <span class="info-value">{{ username }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Статус сервера:</span>
+                        <span class="info-value online">Online</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Время системы:</span>
+                        <span class="info-value" id="systemTime">--:--:--</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Версия Cerberus:</span>
+                        <span class="info-value">2.0.0</span>
+                    </div>
+                </div>
+                <div class="info-actions">
+                    <button class="btn-info" onclick="checkApiStatus()">
+                        <i class="fas fa-sync-alt"></i> Обновить статус
+                    </button>
+                </div>
+            </div>
+
+            <!-- Карточка быстрых действий -->
+            <div class="quick-actions-card">
+                <h3><i class="fas fa-bolt"></i> Быстрые действия</h3>
+                <div class="actions-grid">
+                    <button class="action-btn" onclick="terminalQuickAccess()">
+                        <i class="fas fa-terminal"></i>
+                        <span>Быстрый терминал</span>
+                    </button>
+                    <button class="action-btn" onclick="processMonitor()">
+                        <i class="fas fa-microchip"></i>
+                        <span>Монитор процессов</span>
+                    </button>
+                    <button class="action-btn" onclick="networkStatus()">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Статус сети</span>
+                    </button>
+                    <button class="action-btn" onclick="systemLogs()">
+                        <i class="fas fa-scroll"></i>
+                        <span>Системные логи</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+                <!-- Новый модуль в dashboard.html: -->
+        <div class="module-card">
+            <div class="module-icon">
+                <i class="fas fa-terminal"></i>
+            </div>
+            <div class="module-content">
+                <h3>💻 Командный терминал</h3>
+                <p class="module-description">Интерактивная командная строка с поддержкой Linux команд</p>
+                <div class="module-stats">
+                    <span class="stat"><i class="fas fa-code"></i> Bash/PowerShell</span>
+                    <span class="stat"><i class="fas fa-history"></i> История команд</span>
+                </div>
+            </div>
+            <div class="module-actions">
+                <button class="btn-module" onclick="openTerminal()">
+                    <i class="fas fa-play"></i> Запустить терминал
+                </button>
+            </div>
+        </div>
+
+        <!-- В dashboard.html добавь после modules-grid: -->
+        <div class="stats-dashboard">
+            <h3><i class="fas fa-chart-line"></i> Мониторинг в реальном времени</h3>
+
+            <div class="stats-grid">
+                <div class="stat-card realtime">
+                    <div class="stat-header">
+                        <i class="fas fa-microchip"></i>
+                        <h4>Загрузка CPU</h4>
+                    </div>
+                    <div class="stat-value" id="realCpu">0%</div>
+                    <div class="stat-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="cpuProgress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card realtime">
+                    <div class="stat-header">
+                        <i class="fas fa-memory"></i>
+                        <h4>Память</h4>
+                    </div>
+                    <div class="stat-value" id="realMemory">0%</div>
+                    <div class="stat-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="memoryProgress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card realtime">
+                    <div class="stat-header">
+                        <i class="fas fa-hdd"></i>
+                        <h4>Диск</h4>
+                    </div>
+                    <div class="stat-value" id="realDisk">0%</div>
+                    <div class="stat-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="diskProgress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card realtime">
+                    <div class="stat-header">
+                        <i class="fas fa-code-branch"></i>
+                        <h4>Процессы</h4>
+                    </div>
+                    <div class="stat-value" id="realProcesses">0</div>
+                    <div class="stat-change">Активные</div>
+                </div>
+            </div>
+
+            <!-- График истории -->
+            <div class="chart-container">
+                <canvas id="systemChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- Футер -->
+        <footer class="dashboard-footer">
+            <p>
+                <i class="fas fa-code"></i> Cerberus Security Control v2.0 |
+                <span id="dashboardTime">--:--:--</span> |
+                <a href="/docs" target="_blank">API Docs</a>
+            </p>
+        </footer>
+    </main>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Модальное окно</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Содержимое модального окна -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

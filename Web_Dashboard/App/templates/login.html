@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerberus - Вход</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <!-- Логотип -->
+            <div class="logo">
+                <i class="fas fa-shield-dog"></i>
+                <h1>Cerberus</h1>
+            </div>
+
+            <!-- Заголовок -->
+            <div class="welcome">
+                <h2>Центр управления безопасностью</h2>
+                <p>Войдите в свой аккаунт для доступа к системе</p>
+            </div>
+
+            <!-- Форма входа -->
+            <form id="loginForm" class="login-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="Логин" required value="pexa6">
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Пароль" required value="1055">
+                </div>
+
+                <button type="submit" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i> Войти в систему
+                </button>
+            </form>
+
+            <!-- Кнопки проверки -->
+            <div class="check-buttons">
+                <button class="btn-check" onclick="checkServerStatus()">
+                    <i class="fas fa-server"></i> Статус сервера
+                </button>
+                <button class="btn-check" onclick="checkServerTime()">
+                    <i class="fas fa-clock"></i> Время сервера
+                </button>
+            </div>
+
+            <!-- Результаты проверок -->
+            <div id="statusResult" class="result-card hidden">
+                <div class="result-header">
+                    <span id="resultIcon">⚡</span>
+                    <h3 id="resultTitle">Результат</h3>
+                    <button class="btn-close" onclick="closeResult()">&times;</button>
+                </div>
+                <div id="resultContent" class="result-content">
+                    <!-- Сюда загружаются результаты -->
+                </div>
+            </div>
+
+            <!-- Футер -->
+            <div class="login-footer">
+                <p><i class="fas fa-info-circle"></i> Cerberus Security Control v2.0</p>
+                <p id="clientTime">--:--:--</p>
+            </div>
+        </div>
+
+        <!-- Боковая панель с информацией -->
+        <div class="info-sidebar">
+            <h3><i class="fas fa-star"></i> Особенности системы:</h3>
+            <ul>
+                <li><i class="fas fa-check"></i> Полный контроль безопасности</li>
+                <li><i class="fas fa-check"></i> Управление Linux системами</li>
+                <li><i class="fas fa-check"></i> Централизованное управление модулями</li>
+                <li><i class="fas fa-check"></i> Реальное время мониторинга</li>
+                <li><i class="fas fa-check"></i> Расширенная аутентификация</li>
+            </ul>
+
+            <div class="credentials">
+                <h4><i class="fas fa-key"></i> Тестовые данные:</h4>
+                <p><strong>Логин:</strong> pexa6</p>
+                <p><strong>Пароль:</strong> 1055</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/auth.js"></script>
+</body>
+</html>
