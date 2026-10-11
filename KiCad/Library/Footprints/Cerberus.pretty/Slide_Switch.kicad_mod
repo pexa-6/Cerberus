@@ -1,0 +1,119 @@
+(footprint "Slide_Switch"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -1.27 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "df637739-cbf3-4341-b280-685040ef02be")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Slide Switch"
+		(at 0 2.54 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "e5ae24a6-a237-420b-809d-80b50af5e272")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d7745ebd-20ad-4215-bfe2-5b6fb795fc59")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "98391df3-ea71-411f-bb7c-8a32069e0c7d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -6.35 -2.54)
+		(end 6.35 3.81)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "5f71d6d4-f882-4f48-a317-7c3c036bcefd")
+	)
+	(fp_rect
+		(start -7.62 -3.81)
+		(end 7.62 5.08)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "b706a656-fec3-4b1e-aa82-d605d48fa5a2")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0.46 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "8ccb2b8e-d0e1-4542-8243-fff1f1901d93")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at -5.08 0.635)
+		(size 2 2)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "79fb9386-d563-43e7-a877-7e976483a642")
+	)
+	(pad "2" thru_hole roundrect
+		(at 0 0.635)
+		(size 2 2)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.125)
+		(uuid "e8f25e6d-7d9a-427e-861f-4c80b1ad4f91")
+	)
+	(pad "3" thru_hole roundrect
+		(at 5.08 0.635)
+		(size 2 2)
+		(drill 1.2)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.125)
+		(uuid "6dddf952-f6f5-4cff-9f7f-495c7bce552e")
+	)
+	(embedded_fonts no)
+)

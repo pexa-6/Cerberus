@@ -1,0 +1,324 @@
+{
+  "collapse-filter": true,
+  "search": "-path:\"Settings\"  ",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [
+    {
+      "query": "file:\"🗺️ Developers Map\"",
+      "color": {
+        "a": 1,
+        "rgb": 16777215
+      }
+    },
+    {
+      "query": "file:\"🗺️ Life Map\"",
+      "color": {
+        "a": 1,
+        "rgb": 7208960
+      }
+    },
+    {
+      "query": "path:\"❤️ Life\"",
+      "color": {
+        "a": 1,
+        "rgb": 11796480
+      }
+    },
+    {
+      "query": "file:\"🔎 Android Studio Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 350735
+      }
+    },
+    {
+      "query": "file:\"🔎 XML Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 350735
+      }
+    },
+    {
+      "query": "path:\"🟩 Android Studio\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 366095
+      }
+    },
+    {
+      "query": "file:\"🔎 Kotlin Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 3933570
+      }
+    },
+    {
+      "query": "path:\"🟪 Kotlin\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 4590260
+      }
+    },
+    {
+      "query": "file:\"🔎 Java Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 6571570
+      }
+    },
+    {
+      "query": "path:\"🖥️ Programming/📁 Languages/☕️ Java\" ",
+      "color": {
+        "a": 1,
+        "rgb": 9856060
+      }
+    },
+    {
+      "query": "file:\"🔎 Python Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 9213450
+      }
+    },
+    {
+      "query": "path:\"🖥️ Programming/📁 Languages/🐍 Python\" ",
+      "color": {
+        "a": 1,
+        "rgb": 12177930
+      }
+    },
+    {
+      "query": "file:\"🔎 HTML Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 11159050
+      }
+    },
+    {
+      "query": "path:\"🖥️ Programming/📁 Languages/🌐 Web/🟧 HTML\"",
+      "color": {
+        "a": 1,
+        "rgb": 16409610
+      }
+    },
+    {
+      "query": "file:\"🔎 CSS Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 25780
+      }
+    },
+    {
+      "query": "path:\"🖥️ Programming/📁 Languages/🌐 Web/🟦 CSS\"",
+      "color": {
+        "a": 1,
+        "rgb": 30935
+      }
+    },
+    {
+      "query": "file:\"🔎 JavaScript Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 11182080
+      }
+    },
+    {
+      "query": "path:\"🖥️ Programming/📁 Languages/🌐 Web/🟨 JavaScript\" ",
+      "color": {
+        "a": 1,
+        "rgb": 16773120
+      }
+    },
+    {
+      "query": "file:\"🔎 React Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 1664150
+      }
+    },
+    {
+      "query": "path:\"🖥️ Programming/📁 Languages/🌐 Web/⚛️ React\" ",
+      "color": {
+        "a": 1,
+        "rgb": 1671830
+      }
+    },
+    {
+      "query": "file:\"🔎 Next.js Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 686120
+      }
+    },
+    {
+      "query": "path:\"🖥️ Programming/📁 Languages/🌐 Web/🚀 Next.js\" ",
+      "color": {
+        "a": 1,
+        "rgb": 696360
+      }
+    },
+    {
+      "query": "file:\"🔥 Fullstack + System Design\"",
+      "color": {
+        "a": 1,
+        "rgb": 16734720
+      }
+    },
+    {
+      "query": "path:\"🌐 Web\"",
+      "color": {
+        "a": 1,
+        "rgb": 43775
+      }
+    },
+    {
+      "query": "file:\"📑 Navigation Panel\"",
+      "color": {
+        "a": 1,
+        "rgb": 8192000
+      }
+    },
+    {
+      "query": "path:\"🖥️ Programming/📁 Languages/💾 Assembler\"",
+      "color": {
+        "a": 1,
+        "rgb": 12124160
+      }
+    },
+    {
+      "query": "file:\"🔎 Rust Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 9838080
+      }
+    },
+    {
+      "query": "path:\"🖥️ Programming/📁 Languages/🦀 Rust\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 13114880
+      }
+    },
+    {
+      "query": "file:\"🔎 C++ Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 3302550
+      }
+    },
+    {
+      "query": "path:\"🖥️ Programming/📁 Languages/🖥️ C++\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 3963060
+      }
+    },
+    {
+      "query": "file:\"🔎 C Navigation\"",
+      "color": {
+        "a": 1,
+        "rgb": 3302550
+      }
+    },
+    {
+      "query": "path:\"🖥️ Programming/📁 Languages/📟 C\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 3963060
+      }
+    },
+    {
+      "query": "file:\"📐 Scheme\"",
+      "color": {
+        "a": 1,
+        "rgb": 350880
+      }
+    },
+    {
+      "query": "path:\"🪟 Windows/🖥️ Programming/🔧 Embeddium/📖 Projects/📁 ESP32/👾 Cerberus\" ",
+      "color": {
+        "a": 1,
+        "rgb": 683976
+      }
+    },
+    {
+      "query": "file:\"🧩 Knowledge Map\"",
+      "color": {
+        "a": 1,
+        "rgb": 9868950
+      }
+    },
+    {
+      "query": "path:\"🖥️ Programming/🔧 Embeddium\"  ",
+      "color": {
+        "a": 1,
+        "rgb": 11184810
+      }
+    },
+    {
+      "query": "file:\"🧰 Toolset Map\"",
+      "color": {
+        "a": 1,
+        "rgb": 16711680
+      }
+    },
+    {
+      "query": "path:\"🔷 Arch Linux\"",
+      "color": {
+        "a": 1,
+        "rgb": 3302600
+      }
+    },
+    {
+      "query": "file:\"🐳 Docker\"",
+      "color": {
+        "a": 1,
+        "rgb": 54015
+      }
+    },
+    {
+      "query": "file:\"☸️ Kubernetes\"",
+      "color": {
+        "a": 1,
+        "rgb": 11809535
+      }
+    },
+    {
+      "query": "file:\"⌨️ Hotkeys + CMD\"",
+      "color": {
+        "a": 1,
+        "rgb": 13158400
+      }
+    },
+    {
+      "query": "file:\"🐙 Git; GitHub\"",
+      "color": {
+        "a": 1,
+        "rgb": 16746240
+      }
+    },
+    {
+      "query": "file:\"🖌️ Blender\"",
+      "color": {
+        "a": 1,
+        "rgb": 16728064
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": -0.5,
+  "nodeSizeMultiplier": 1.40296834516165,
+  "lineSizeMultiplier": 2.9924887471868,
+  "collapse-forces": true,
+  "centerStrength": 0.398255813953488,
+  "repelStrength": 20,
+  "linkStrength": 1,
+  "linkDistance": 399,
+  "scale": 0.9393597390963869,
+  "close": true
+}

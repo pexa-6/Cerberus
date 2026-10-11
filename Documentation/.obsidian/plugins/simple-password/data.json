@@ -1,0 +1,13 @@
+{
+  "autoLockMinutes": 60,
+  "privacyMode": "close",
+  "protectedPaths": [
+    {
+      "type": "prefix",
+      "content": "/"
+    }
+  ],
+  "hint": "Minecraft",
+  "password": "10557604",
+  "blockGraph": true
+}
